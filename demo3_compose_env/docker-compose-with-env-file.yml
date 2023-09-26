@@ -12,5 +12,5 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV}
       PORT: ${PORT}
-      VERSION: ${VERSION}
+      VERSION: ${VERSION:-N/A}
       
