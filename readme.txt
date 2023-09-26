@@ -4,3 +4,6 @@
 
 # Note
 - https://hub.docker.com/_/hello-world
+- docker ps
+- docker pull hello-world
+- docker run hello-world
