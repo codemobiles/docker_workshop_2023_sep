@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.json({ result: "ok" });
+  res.json({ result: "ok v3" });
 });
 
 // http://localhost:3000/register?username=lek&password=6666
@@ -11,11 +11,11 @@ app.get("/register", (req, res) => {
 });
 
 // linux
-// export PORT=3000  
+// export PORT=3000
 // echo $PORT
 
 // win
-// set PORT 3000  
+// set PORT 3000
 // echo %PORT%
 
 app.listen(process.env.PORT || 3000, () => {

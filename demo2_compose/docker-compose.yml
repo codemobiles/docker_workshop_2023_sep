@@ -1,0 +1,18 @@
+# docker-compose up
+# docker-compose up -d 
+# docker-compose up -d --build
+# docker-compose stop/start/restart
+# docker-compose build
+
+version: '3.4'
+
+services:
+  demo2:
+    image: demo2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3001:3000
