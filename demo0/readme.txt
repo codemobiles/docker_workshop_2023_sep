@@ -4,6 +4,10 @@
 - https://hub.docker.com/_/mariadb
 $ docker run -p 3306:3306  --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
 $ docker run -p 3306:3306 -d --rm  --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
+$ docker stop some-mariadb 
+$ docker start some-mariadb 
+
+
 
 - https://hub.docker.com/_/phpmyadmin
 $ docker run --name  phpmyadmin -d --link some-mariadb:db -p 8080:80 phpmyadmin 
