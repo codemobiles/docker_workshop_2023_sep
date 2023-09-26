@@ -1,5 +1,6 @@
 // docker run -it node
 // docker run -v ./:/app --rm --name nodeapp -it node node /app/index.js
+// docker build -t demo1:1.0 .
 console.log("Hey");
 
 const main = async () => {

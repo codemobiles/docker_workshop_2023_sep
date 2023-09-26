@@ -8,6 +8,43 @@
       "type": "shell",
       "command": "git add . && git commit -m '1234' && git push",
       "problemMatcher": []
+    },
+    {
+      "type": "docker-build",
+      "label": "docker-build",
+      "platform": "node",
+      "dockerBuild": {
+        "dockerfile": "${workspaceFolder}/demo1_dockerfile/Dockerfile",
+        "context": "${workspaceFolder}/demo1_dockerfile",
+        "pull": true
+      },
+      "node": {
+        "package": "${workspaceFolder}/demo1_dockerfile/package.json"
+      }
+    },
+    {
+      "type": "docker-run",
+      "label": "docker-run: release",
+      "dependsOn": ["docker-build"],
+      "platform": "node",
+      "node": {
+        "package": "${workspaceFolder}/demo1_dockerfile/package.json"
+      }
+    },
+    {
+      "type": "docker-run",
+      "label": "docker-run: debug",
+      "dependsOn": ["docker-build"],
+      "dockerRun": {
+        "env": {
+          "DEBUG": "*",
+          "NODE_ENV": "development"
+        }
+      },
+      "node": {
+        "package": "${workspaceFolder}/demo1_dockerfile/package.json",
+        "enableDebugging": true
+      }
     }
   ]
 }
