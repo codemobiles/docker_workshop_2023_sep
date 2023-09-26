@@ -1,0 +1,14 @@
+# docker-compose -f docker-compose-with-env-file.yml up -d
+version: '3.4'
+
+services:
+  demo2:
+    image: demo2
+    build:
+      context: .
+      dockerfile: ./Dockerfile          
+    ports:
+      - 3001:3002
+    environment:
+      - file: .env
+      
