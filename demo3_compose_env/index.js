@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.json({ result: "ok v3" });
+  res.json({ result: "ok " + (process.env.VERSION || "") });
 });
 
 // http://localhost:3000/register?username=lek&password=6666
