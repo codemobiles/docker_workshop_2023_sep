@@ -1,12 +1,13 @@
 version: '3.4'
 
 services:
-  server:
-    image: server
+  backend:
+    image: backend
     build:
-      context: demo5_server_client_mariadb/backend
+      context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
-    ports:
-      - 3000:3000
+      db_server: 192.168.10.109
+    ports: 
+      - 8080:8080
