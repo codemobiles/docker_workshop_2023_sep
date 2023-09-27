@@ -1,6 +1,7 @@
 version: '3.4'
 services:
   database:
+    container_name: db
     image: mariadb
     ports:
       - '3306:3306'    
@@ -11,6 +12,7 @@ services:
     volumes:
       - ./data:/var/lib/mysql   
   phpmyadmin:
+    container_name: php_admin
     image: phpmyadmin
     ports:
       - '8081:80'       

@@ -7,3 +7,7 @@
 - docker ps
 - docker pull hello-world
 - docker run hello-world
+
+# การ Scale Docker Compose ด้วย Nginx Reverse Proxy พร้อมทำ Load Balancer
+
+https://www.youtube.com/watch?v=ykwAI_8Pkvw&t=93s
