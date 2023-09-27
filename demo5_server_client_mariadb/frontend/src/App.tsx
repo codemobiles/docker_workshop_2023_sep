@@ -1,35 +1,48 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { useEffect, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
+export default function App() {
+  const [dataArray, setdataArray] = useState([]);
+  const [newData, setNewData] = useState("");
+  useEffect(() => {
+    loadData();
+  });
+
+  const loadData = async () => {
+    const response = await fetch("http://localhost:8080");
+    setdataArray(await response.json());
+  };
+
+  const addData = async (data: string) => {
+    await fetch("http://localhost:8080/add/" + data);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React + Docker</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div style={{ padding: 20 }}>
+      <input
+        type="text"
+        placeholder="Enter your data"
+        value={newData}
+        onChange={(event) => setNewData(event.target.value)}
+        onKeyPress={(event) => {
+          if (event.key == "Enter") {
+            addData(newData);
+            setNewData("");
+          }
+        }}
+      />
+      <button
+        onClick={() => {
+          addData(newData);
+          setNewData("");
+        }}
+      >
+        Create
+      </button>
+      <ul>
+        {dataArray.map((e: { _id: string; name: string }) => (
+          <li key={e._id}>{e.name}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
-
-export default App;
