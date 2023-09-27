@@ -7,4 +7,5 @@ COPY . .
 EXPOSE 8080
 RUN chown -R node /usr/src/app
 USER node
-CMD ["npm", "start"]
+RUN chmod +x ./start.sh
+CMD ["./start.sh"]
