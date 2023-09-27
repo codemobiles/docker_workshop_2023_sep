@@ -1,0 +1,32 @@
+version: '3.4'
+services:
+  database:
+    image: mariadb
+    ports:
+      - '3306:3306'    
+    environment:
+      - MARIADB_USER=example-user
+      - MARIADB_PASSWORD=my_cool_secret
+      - MARIADB_ROOT_PASSWORD=my-secret-pW7770
+    volumes:
+      - ./data:/var/lib/mysql   
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - '8081:80'    
+    links:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    depends_on:
+      - database
+
+    image: frontend
+    build: ./frontend
+    ports:
+      - "85:80"
+    restart: always
+    depends_on:
+      - backend
