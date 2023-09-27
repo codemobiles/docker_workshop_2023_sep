@@ -11,6 +11,7 @@ services:
       - MARIADB_ROOT_PASSWORD=my-secret-pW7770
     volumes:
       - ./data:/var/lib/mysql   
+ 
   phpmyadmin:
     container_name: php_admin
     image: phpmyadmin
@@ -22,6 +23,19 @@ services:
       PMA_ARBITRARY: 1
     depends_on:
       - database
+  
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 85:80
+    depends_on:
+      - backend  
+
   backend:
     image: backend
     build:
