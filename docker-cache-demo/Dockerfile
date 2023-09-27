@@ -4,4 +4,4 @@ FROM nginx:1.21.6
 RUN apt-get update && apt-get -y upgrade
 
 # Use a custom startpage
-RUN echo '<html><bod>My New Custom Startpage</body></html>' > /usr/share/nginx/html/index.html
+RUN echo '<html><bod>My New Custom v3 Startpage</body></html>' > /usr/share/nginx/html/index.html
