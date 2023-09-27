@@ -11,10 +11,10 @@ services:
     image: demo2
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile      
     environment:
       NODE_ENV: production
       PORT: 3002
-      VERSION: v4
+      VERSION: v4      
     ports:
       - 3001:3002

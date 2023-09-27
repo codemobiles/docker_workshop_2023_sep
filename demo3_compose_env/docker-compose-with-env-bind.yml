@@ -10,5 +10,7 @@ services:
     ports:
       - 3001:3002
     environment:
-      - file: .env
+      NODE_ENV: ${NODE_ENV}
+      PORT: ${PORT}
+      VERSION: ${VERSION:-N/A}
       
